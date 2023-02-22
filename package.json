@@ -1,0 +1,51 @@
+{
+    "scripts": {
+        "start": "node -r ts-node/register ./src/index.ts",
+        "dev": "nodemon",
+        "build": "tsc",
+        "eslint": "./node_modules/.bin/eslint ./src --ext .js,.ts",
+        "migrate": "npx knex migrate:up --knexfile ./src/database/knexFile.ts"
+    },
+    "dependencies": {
+        "cross-fetch": "^3.1.5",
+        "dotenv": "8.2.0",
+        "instagram-scraping": "^1.0.17",
+        "instagram-without-api-node": "^1.0.9",
+        "node-fetch": "2.6.1"
+    },
+    "devDependencies": {
+        "@types/knex": "0.16.1",
+        "@types/node": "14.11.1",
+        "@types/node-fetch": "2.5.7",
+        "@typescript-eslint/eslint-plugin": "2.21.0",
+        "@typescript-eslint/parser": "2.21.0",
+        "eslint": "6.8.0",
+        "eslint-config-google": "0.14.0",
+        "eslint-config-prettier": "6.10.0",
+        "eslint-plugin-babel": "5.3.0",
+        "eslint-plugin-import": "2.20.1",
+        "eslint-plugin-jsdoc": "21.0.0",
+        "eslint-plugin-prettier": "3.1.4",
+        "eslint-plugin-promise": "4.2.1",
+        "eslint-plugin-typescript": "0.14.0",
+        "nodemon": "2.0.2",
+        "prettier": "^2.1.2",
+        "ts-node": "8.6.2",
+        "tslib": "1.11.1",
+        "typescript": "3.8.3",
+        "typings": "2.1.1"
+    },
+    "nodemonConfig": {
+        "ignore": [
+            "**/*.test.ts",
+            "**/*.spec.ts",
+            ".git",
+            "node_modules"
+        ],
+        "watch": [
+            "src"
+        ],
+        "exec": "npm start",
+        "ext": "ts"
+    }
+}

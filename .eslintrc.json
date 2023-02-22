@@ -1,0 +1,62 @@
+{
+    "parser": "@typescript-eslint/parser",
+    "extends": ["eslint:recommended", "google", "plugin:@typescript-eslint/recommended", "plugin:prettier/recommended"],
+    "rules": {
+        "no-unused-vars": "off",
+        "max-lines": ["error", {"max": 200, "skipBlankLines": true, "skipComments": true}],
+        "max-len": ["error", {"code": 120}],
+        "max-lines-per-function": ["warn", {"max": 50, "skipBlankLines": true, "skipComments": true}],
+        "prefer-const": [
+            "error",
+            {
+                "destructuring": "all",
+                "ignoreReadBeforeAssign": true
+            }
+        ],
+        "no-console": 1,
+        "promise/no-return-wrap": "error",
+        "promise/param-names": "error",
+        "promise/catch-or-return": "error",
+        "promise/no-nesting": 1,
+        "valid-jsdoc": "off",
+        "no-invalid-this": "off",
+        "promise/always-return": "off",
+        "indent": ["error", 4, {"SwitchCase": 1}],
+        "linebreak-style": "off",
+        "no-debugger": 2,
+        "jsdoc/no-types": 2,
+        "complexity": 1,
+        "quotes": ["error", "double"],
+        "require-jsdoc": [
+            "error",
+            {
+                "require": {
+                    "FunctionDeclaration": false,
+                    "MethodDefinition": false,
+                    "ClassDeclaration": false,
+                    "ArrowFunctionExpression": false,
+                    "FunctionExpression": false
+                }
+            }
+        ],
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/no-use-before-define": "off",
+        "@typescript-eslint/camelcase": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+    },
+    "env": {
+        "browser": false,
+        "es6": true,
+        "node": true,
+        "jest": true
+    },
+    "parserOptions": {
+        "ecmaVersion": 7,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "plugins": ["babel", "promise", "jsdoc", "typescript", "prettier"]
+}

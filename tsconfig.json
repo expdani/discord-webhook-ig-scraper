@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "allowJs": true,
+        "resolveJsonModule": true,
+        "outDir": "build",
+        "rootDir": "./",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "module": "commonjs",
+        "strict": true,
+        "typeRoots": ["node_modules/@types", "src/custom-types"],
+        "moduleResolution": "node",
+        "esModuleInterop": true,
+        "baseUrl": "."
+    },
+    "include": ["./src/**/*"],
+    "exclude": ["node_modules"]
+}
