@@ -63,4 +63,4 @@ function replaceStrings(text: string): string {
 }
 
 main();
-setInterval(main, 30000);
+setInterval(main, 300000);
