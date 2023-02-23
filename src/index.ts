@@ -11,8 +11,6 @@ const headers = {
 
 const cachedIds: string[] = [];
 
-const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
-
 async function main() {
 	let initial = false;
 	for (const item of fetchList.fetchList) {
