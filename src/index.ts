@@ -25,6 +25,8 @@ async function main() {
 		if (response.length < 1) return;
 		if (cachedIds.includes(response[0].id)) return;
 
+		console.log(response);
+		
 		cachedIds.push(response[0].id);
 		if (!initial) sendToDiscord(item.name, item.avatar, response[0])
 	}
