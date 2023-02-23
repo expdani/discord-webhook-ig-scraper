@@ -2,21 +2,21 @@
 const request = require("request");
 
 export function getRecentPosts({
-    id,
-    maxImages,
-    pretty,
-    headers
+	id,
+	maxImages,
+	pretty,
+	headers
 }: any): any {
 
-    if (!id) id = 'therock';
-    if (!maxImages || Number.isNaN(maxImages)) maxImages = 12;
-    if (!pretty) pretty = false;
-    if (!headers) headers = {};
+	if (!id) id = 'therock';
+	if (!maxImages || Number.isNaN(maxImages)) maxImages = 12;
+	if (!pretty) pretty = false;
+	if (!headers) headers = {};
 
-    const options = {
-        url: `https://i.instagram.com/api/v1/users/web_profile_info/?username=${id}`,
-        headers
-    };
+	const options = {
+		url: `https://i.instagram.com/api/v1/users/web_profile_info/?username=${id}`,
+		headers
+	};
 
 	let result: any = []
 	return new Promise(function (resolve) {
