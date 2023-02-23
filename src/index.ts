@@ -21,12 +21,11 @@ async function main() {
 			id: item.id,
 		});
 
-		if (cachedIds.length < 1) initial = false;
+		if (cachedIds.length < 1) initial = true;
 		if (response.length < 1) return;
 		if (cachedIds.includes(response[0].id)) return;
 
 		cachedIds.push(response[0].id);
-		console.log(response);
 		if (!initial) sendToDiscord(item.name, item.avatar, response[0])
 	}
 }
