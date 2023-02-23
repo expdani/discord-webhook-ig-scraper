@@ -11,6 +11,8 @@ const headers = {
 
 const cachedIds: string[] = [];
 
+const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+
 async function main() {
 	let initial = false;
 	for (const item of fetchList.fetchList) {
@@ -21,11 +23,9 @@ async function main() {
 			id: item.id,
 		});
 
+		console.log(response[0].text);
 		if (cachedIds.length < 1) initial = true;
 		if (response.length < 1) return;
-
-		console.log(response[0].text)
-
 		if (cachedIds.includes(response[0].id)) return;
 
 		cachedIds.push(response[0].id);
