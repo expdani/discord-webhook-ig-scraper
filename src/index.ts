@@ -1,5 +1,5 @@
-import {env} from "../environment";
-import {getRecentPosts} from "./scraper";
+import { env } from "../environment";
+import { getRecentPosts } from "./scraper";
 import fetch from "node-fetch";
 import fetchList from "../fetchList.json";
 
@@ -39,7 +39,7 @@ async function sendToDiscord(name: string, avatar: string, post: any) {
         embeds: [
             {
                 description: replaceStrings(post.text),
-        image: {url: post.imageUrl},
+                image: { url: post.imageUrl },
             },
         ],
     };

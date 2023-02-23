@@ -1,48 +1,50 @@
 /* eslint-disable */
 const request = require("request");
 
-export function getRecentPosts({
-	id,
-	maxImages,
-	pretty,
-	headers
-}: any): any {
+export function getRecentPosts({ id, maxImages, pretty, headers }: any): any {
+    if (!id) id = "therock";
+    if (!maxImages || Number.isNaN(maxImages)) maxImages = 12;
+    if (!pretty) pretty = false;
+    if (!headers) headers = {};
 
-	if (!id) id = 'therock';
-	if (!maxImages || Number.isNaN(maxImages)) maxImages = 12;
-	if (!pretty) pretty = false;
-	if (!headers) headers = {};
+    const options = {
+        url: `https://i.instagram.com/api/v1/users/web_profile_info/?username=${id}`,
+        headers,
+    };
 
-	const options = {
-		url: `https://i.instagram.com/api/v1/users/web_profile_info/?username=${id}`,
-		headers
-	};
-
-	let result: any = []
-	return new Promise(function (resolve) {
-		request(options, async (error: any, res: any, body: any) => {
-			if (!error && res.statusCode == 200) {
-				let json = null
-				try { json = JSON.parse(body); } catch (e) { console.log(e) }
-				const items = json?.data?.user?.edge_owner_to_timeline_media?.edges || [];
-				const filteredItems = items.filter((el: any, index: any) => { return !maxImages ? el : index < maxImages });
-				const mappedItems = await Promise.all(filteredItems.map(async (post: any) => {
-					const obj = {
-						id: post.node.id,
-						time: post.node.taken_at_timestamp,
-						imageUrl: post.node.display_url,
-						likes: post.node.edge_media_to_comment.count,
-						comments: post.node.edge_media_to_comment.count,
-						link: 'https://www.instagram.com/p/' + post.node.shortcode + '/',
-						text: post?.node.edge_media_to_caption?.edges[0]?.node?.text
-					}
-					return obj;
-				}));
-				result = mappedItems;
-			}
-			resolve(result);
-		});
-	});
+    let result: any = [];
+    return new Promise(function (resolve) {
+        request(options, async (error: any, res: any, body: any) => {
+            if (!error && res.statusCode == 200) {
+                let json = null;
+                try {
+                    json = JSON.parse(body);
+                } catch (e) {
+                    console.log(e);
+                }
+                const items = json?.data?.user?.edge_owner_to_timeline_media?.edges || [];
+                const filteredItems = items.filter((el: any, index: any) => {
+                    return !maxImages ? el : index < maxImages;
+                });
+                const mappedItems = await Promise.all(
+                    filteredItems.map(async (post: any) => {
+                        const obj = {
+                            id: post.node.id,
+                            time: post.node.taken_at_timestamp,
+                            imageUrl: post.node.display_url,
+                            likes: post.node.edge_media_to_comment.count,
+                            comments: post.node.edge_media_to_comment.count,
+                            link: "https://www.instagram.com/p/" + post.node.shortcode + "/",
+                            text: post?.node.edge_media_to_caption?.edges[0]?.node?.text,
+                        };
+                        return obj;
+                    }),
+                );
+                result = mappedItems;
+            }
+            resolve(result);
+        });
+    });
 }
 
 // maybe for later
