@@ -21,7 +21,7 @@ async function main() {
 			id: item.id,
 		});
 
-		if (cachedIds.length < 1) initial = true;
+		if (cachedIds.length < 1) initial = false;
 		if (response.length < 1) return;
 		if (cachedIds.includes(response[0].id)) return;
 
