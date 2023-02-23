@@ -1,0 +1,7 @@
+{
+	"fetchList": [{
+		"name": "webhook name",
+		"id": "instagramid",
+		"avatar": "webhook avatar"
+	}]
+}

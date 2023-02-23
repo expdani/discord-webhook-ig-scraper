@@ -109,3 +109,5 @@ build
 
 # Google cloud access
 GoogleCloudAccess.json
+
+fetchList.json
