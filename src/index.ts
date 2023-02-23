@@ -26,7 +26,7 @@ async function main() {
 		if (cachedIds.includes(response[0].id)) return;
 
 		console.log(response);
-		
+
 		cachedIds.push(response[0].id);
 		if (!initial) sendToDiscord(item.name, item.avatar, response[0])
 	}
@@ -63,4 +63,4 @@ function replaceStrings(text: string): string {
 }
 
 main();
-setInterval(main, 5000);
+setInterval(main, 30000);
